@@ -11,6 +11,10 @@
     <xacro:include filename="$(find go1_description)/xacro/gazebo.xacro"/>
     <xacro:include filename="$(find go1_description)/xacro/depthCamera.xacro"/>
     <xacro:include filename="$(find go1_description)/xacro/ultraSound.xacro"/>
+
+    <xacro:if value="$(arg USE_LIDAR)">
+        <xacro:include filename="$(find go1_description)/xacro/VLP-16.xacro"/>
+    </xacro:if> 
     <!-- <xacro:include filename="$(find go1_gazebo)/launch/stairs.urdf.xacro"/> -->
 
     <!-- <xacro:stairs stairs="15" xpos="0" ypos="0" zpos="0" /> -->
@@ -66,6 +70,46 @@
                 izz="${trunk_izz}"/>  
         </inertial>
     </link>
+
+
+    <xacro:if value="$(arg USE_LIDAR)">
+        <xacro:VLP-16 sensor_name="velodyne" parent= "trunk" rate= "15">
+            <!-- <origin rpy="0 0 0 " xyz="0 0 0.055"/> -->
+            <origin rpy="0 0 0 " xyz="0 0 0.15"/>
+        </xacro:VLP-16>
+    </xacro:if> 
+
+    <!-- 添加小盒子（充当负载），定义连接链接的关节 -->
+    <!-- <joint name="base_to_box" type="fixed">
+        <origin xyz="0.0 0.0 0.10"/>
+        <parent link="trunk"/>
+        <child link="box_link"/>
+    </joint>
+
+    <link name="box_link">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.1 0.1"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0.7 0.5 0 0.5" />
+            </material>
+        </visual>
+        <inertial>
+            <origin xyz="0 0 0"/>
+            <mass value="6"/>
+            <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+        </inertial>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.1 0.1 0.1"/>
+            </geometry>
+        </collision>
+    </link> -->
+    <!-- 添加小盒子（充当负载） -->
+
 
     <joint name="imu_joint" type="fixed">
         <parent link="trunk"/>
