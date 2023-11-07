@@ -1,0 +1,10 @@
+\subsubsection usage Usage
+\verbatim
+<node name="dynamic_PID" pkg="dynamic_reconfigure_test" type="dynamic_PID">
+  <param name="KP" type="double" value="0.5" />
+  <param name="KI" type="double" value="20.0" />
+  <param name="KD" type="double" value="31.5" />
+  <param name="KE" type="double" value="20.0" />
+</node>
+\endverbatim
+

@@ -1,0 +1,8 @@
+prefix=/home/zsl/adaptive_ws_1/devel
+
+Name: dynamic_reconfigure_test
+Description: Description of dynamic_reconfigure_test
+Version: 0.0.0
+Cflags: -I/home/zsl/adaptive_ws_1/devel/include
+Libs: -L${prefix}/lib 
+Requires: dynamic_reconfigure roscpp rospy

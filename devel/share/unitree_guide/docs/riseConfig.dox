@@ -1,0 +1,9 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~K_s" : \b [double] K_s_param min: 0.0, default: 0.0, max: 500.0
+- \b "~beita" : \b [double] beita_param min: 0.0, default: 0.0, max: 500.0
+- \b "~alphe1" : \b [double] alphe1_param min: 0.0, default: 0.0, max: 500.0
+- \b "~alphe2" : \b [double] alphe2_param min: 0.0, default: 0.0, max: 500.0
+

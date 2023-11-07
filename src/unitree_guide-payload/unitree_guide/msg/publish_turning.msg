@@ -1,0 +1,9 @@
+float64[3] q
+float64[3] q_d
+float64[3] w
+float64[3] w_d
+float64[3] err_q
+float64[3] err_w
+float64[3] disturbance
+float64[3] dkexi
+float64[3] U

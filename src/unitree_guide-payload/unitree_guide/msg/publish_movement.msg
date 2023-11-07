@@ -1,0 +1,11 @@
+float64[3] p
+float64[3] p_d
+float64[3] err_p
+float64[3] v
+float64[3] v_d
+float64[3] err_v
+float64[3] a
+float64[3] a_d
+float64 sumfootforce 
+float64 d_mp
+float64 pos_error_0

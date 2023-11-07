@@ -1,0 +1,10 @@
+\subsubsection usage Usage
+\verbatim
+<node name="dynamic_RISE" pkg="dynamic_reconfigure_test" type="dynamic_RISE">
+  <param name="K_s" type="double" value="0.0" />
+  <param name="beita" type="double" value="0.0" />
+  <param name="alphe1" type="double" value="0.0" />
+  <param name="alphe2" type="double" value="0.0" />
+</node>
+\endverbatim
+
