@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 
 <robot name="go1" xmlns:xacro="http://www.ros.org/wiki/xacro">
+        <!-- 宏:黑色设置 -->
+    <material name="yellow">
+        <color rgba="1.0 1.0 0.0 1.0" />
+    </material>
 
     <xacro:arg name="DEBUG" default="false"/>
 
@@ -92,13 +96,12 @@
             <geometry>
                 <box size="0.1 0.1 0.1"/>
             </geometry>
-            <material name="black">
-                <color rgba="0.7 0.5 0 0.5" />
-            </material>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <material name="yellow" />
         </visual>
         <inertial>
             <origin xyz="0 0 0"/>
-            <mass value="6"/>
+            <mass value="3"/>
             <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
         </inertial>
         <collision>
@@ -107,7 +110,10 @@
                 <box size="0.1 0.1 0.1"/>
             </geometry>
         </collision>
-    </link> -->
+    </link>
+    <gazebo reference="box_link">
+        <material>Gazebo/Yellow</material>
+    </gazebo> -->
     <!-- 添加小盒子（充当负载） -->
 
 

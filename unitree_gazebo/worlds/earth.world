@@ -37,6 +37,66 @@
         <include>
             <uri>model://ground_plane</uri>
         </include>
+
+ <model name='ground_plane_1'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.8</mu>
+                <mu2>0.8</mu2>
+                <fdir1>1 0 0</fdir1>
+                <slip1>0.0</slip1>
+                <slip2>0.0</slip2>
+              </ode>
+            </friction>
+            <bounce/>
+            <contact>
+              <ode>
+                <kp>5000</kp> <!--5000 is pretty ridiculously malleable, like a really underinflated yoga ball, ; 500,000 is good for truly solid objects like metals-->>
+                <kd>0</kd> <!--0 represents a perfectly elastic collision (no kinetic energy is lost during collision) ; 100 is more like dropping a block of wood on the ground-->>
+                <min_depth>1.0</min_depth>
+                <max_vel>100</max_vel>
+              </ode>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grass</name>
+            </script>
+            <ambient>1 1 1 1</ambient>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+
+
         <!-- environment blocks, obstacles or stairs -->
         <model name="static_environment">
         <static>true</static>
@@ -62,6 +122,59 @@
                 </visual>
             </link>
         </model>
+
+
+<model name="friction_box">
+      <pose>2 0 0 0 0 0</pose> <!-- 位置和姿态 -->
+      <static>false</static> <!-- 设置物体是否静态，这里设置为非静态 -->
+
+      <!-- 添加碰撞信息 -->
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size> <!-- 盒子的大小 -->
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.35</mu> <!-- 设置主要摩擦系数 -->
+                <mu2>0.35</mu2> <!-- 设置第二摩擦系数 -->
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <!-- 可视化信息 -->
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size> <!-- 盒子的大小 -->
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Bricks</name>
+            </script>
+          </material>
+        </visual>
+
+<inertial>
+          <mass>9</mass> <!-- 设置物体的质量，单位为千克 -->
+          <inertia>
+            <ixx>1</ixx> <!-- 惯性矩阵的各项值 -->
+            <iyy>1</iyy>
+            <izz>1</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+
+      </link>
+    </model>
+
 
     </world>
 </sdf>
